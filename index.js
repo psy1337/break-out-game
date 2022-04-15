@@ -104,8 +104,9 @@ function moveUserRight() {
 }
 
 document.addEventListener("keydown", moveUser)
-leftControl.addEventListener("click", moveUserLeft)
+//leftControl.addEventListener("click", moveUserLeft)
 rightControl.addEventListener("click", moveUserRight)
+leftControl.addEventListener("touchstart", moveUserLeft)
 
 //add ball
 const ball = document.createElement("div")
