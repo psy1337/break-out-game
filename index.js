@@ -8,6 +8,7 @@ const ballDiameter = 20
 const boardWidth = 560
 const boardHeight = 300
 let timerId
+let moveIntervalId
 let xDirection = -2
 let yDirection = 2
 let score = 0
@@ -103,10 +104,27 @@ function moveUserRight() {
   }
 }
 
+function keepMovingLeft() {
+  moveIntervalId = setInterval(moveUserLeft, 50)
+}
+
+function keepMovingRight() {
+  moveIntervalId = setInterval(moveUserRight, 50)
+}
+
+function stopMoving() {
+  clearInterval(moveIntervalId)
+}
+
 document.addEventListener("keydown", moveUser)
-//leftControl.addEventListener("click", moveUserLeft)
-rightControl.addEventListener("click", moveUserRight)
+leftControl.addEventListener("mousedown", keepMovingLeft)
+rightControl.addEventListener("mousedown", keepMovingRight)
+leftControl.addEventListener("mouseup", stopMoving)
+rightControl.addEventListener("mouseup", stopMoving)
 leftControl.addEventListener("touchstart", moveUserLeft)
+rightControl.addEventListener("touchstart", keepMovingRight)
+leftControl.addEventListener("touchend", stopMoving)
+rightControl.addEventListener("touchend", stopMoving)
 
 //add ball
 const ball = document.createElement("div")
