@@ -27,3 +27,20 @@
   border-radius: 10px;
   background-color: red;
 }
+
+.control {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.control-left {
+  left: 100px;
+  top: 450px;
+}
+
+.control-right {
+  right: 100px;
+  top: 450px;
+}

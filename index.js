@@ -1,5 +1,7 @@
 const grid = document.querySelector(".grid")
 const scoreDisplay = document.querySelector("#score")
+const leftControl = document.querySelector(".control-left")
+const rightControl = document.querySelector(".control-right")
 const blockWidth = 100
 const blockHeight = 20
 const ballDiameter = 20
@@ -79,21 +81,31 @@ function drawBall() {
 function moveUser(e) {
   switch (e.key) {
     case "ArrowLeft":
-      if (currentPosition[0] > 0) {
-        currentPosition[0] -= 10
-        drawUser()
-      }
+      moveUserLeft()
       break
     case "ArrowRight":
-      if (currentPosition[0] < boardWidth - blockWidth) {
-        currentPosition[0] += 10
-        drawUser()
-      }
+      moveUserRight()
       break
   }
 }
 
+function moveUserLeft() {
+  if (currentPosition[0] > 0) {
+    currentPosition[0] -= 10
+    drawUser()
+  }
+}
+
+function moveUserRight() {
+  if (currentPosition[0] < boardWidth - blockWidth) {
+    currentPosition[0] += 10
+    drawUser()
+  }
+}
+
 document.addEventListener("keydown", moveUser)
+leftControl.addEventListener("click", moveUserLeft)
+rightControl.addEventListener("click", moveUserRight)
 
 //add ball
 const ball = document.createElement("div")
